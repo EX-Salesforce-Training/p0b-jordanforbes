@@ -1,0 +1,29 @@
+public class Fibonacci {
+    
+    public void Fib(integer n){
+     	
+        integer level = 1;
+       	integer x = 0;
+        integer y = 1;
+        integer z;
+            
+            while(level-1<n){
+                if(level == 1){
+                    z = 1;
+                }else{
+                    z = x+y;
+               		x = y;
+                	y = z; 
+                }
+                level++;
+            }
+       	system.debug('input '+ n+', output '+z);
+    }
+}
+
+/*
+Input: 0 Output: 0
+* Input: 1 Output: 1
+* Input: 2 Output: 1
+* Input: 10 Output: 55
+*/
