@@ -1,0 +1,16 @@
+public class factorial {
+    public static Integer nFactorial( Integer n){
+        if(n == 0){
+            return 1;
+        }else{
+            integer Ans = 1;
+            for(Integer i=1; i<n+1; i++){
+                system.debug('Ans '+Ans);
+                Ans = Ans*i;
+            }
+            system.debug(Ans);
+            return Ans;
+        }
+    }
+
+}	
