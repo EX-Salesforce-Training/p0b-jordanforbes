@@ -1,0 +1,27 @@
+public class sortArray {
+    
+    public static Integer[] newSorter(integer[] intList){
+        
+        system.debug('intList: '+intList);
+        integer n = intList.size();
+        system.debug('n: '+n);
+        
+        for (integer i = 0; i< n-1; i++){
+            integer min_idx = i;
+            for(integer j = i+1; j<n; j++){
+                if(intList[j] < intList[min_idx]){
+                    min_idx = j;
+                }
+            }
+            integer temp = intList[min_idx];
+            intList[min_idx] = intList[i];
+            intList[i] = temp;
+        }
+        
+        system.debug(intList);
+        return intList;
+        
+       
+    }
+	
+}

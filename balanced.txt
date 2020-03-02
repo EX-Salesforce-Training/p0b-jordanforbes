@@ -1,0 +1,68 @@
+public class balancedBrackets {
+    public static boolean bracketsAreBalanced( String s ){
+        
+        List<String> splitStr = new List<String>(s.split(','));
+        system.debug(splitStr.size());
+        
+        integer x = splitStr.size(); //4
+        integer y = splitStr.size()/2; //2
+        
+        integer pass = 0;
+        integer fail = 0;
+        
+       // system.debug(splitStr[0]);
+        
+        for(integer i = 0; i<y; i++){ //y = 2 i<2, i= 0,1 
+           // system.debug('works');
+            for(integer j = x-1; j>y-1; j--){//j = 3, j>1, j = 3,2
+                
+                system.debug(splitStr);
+                String left = splitStr[i];
+                String right = splitStr[j];
+                
+                if(left =='(' && right == ')'){
+                	system.debug('PASS! left: '+left+' right: '+right);
+                	pass = 1;
+                    	i+=1;
+                }else if(left =='[' && right == ']'){
+                   	system.debug('PASS! left: '+left+' right: '+right);
+                  	pass = 1;
+                    	i+=1;
+                }else if(left =='{' && right == '}'){
+                   	system.debug('PASS! left: '+left+' right: '+right);
+                   	pass = 1;
+                    	i+=1;
+                }else if(left ==')' && right == '('){
+                	system.debug('PASS! left: '+left+' right: '+right);
+                	pass = 1;
+                    	i+=1;
+                }else if(left ==']' && right == '['){
+                   	system.debug('PASS! left: '+left+' right: '+right);
+                  	pass = 1;
+                    	i+=1;
+                }else if(left =='}' && right == '{'){
+                   	system.debug('PASS! left: '+left+' right: '+right);
+                   	pass = 1;
+                    	i+=1;
+                }else{
+                    system.debug('FAIL! left: '+left+' right: '+right);
+                    fail = 1;
+                    i+=1;
+                }
+            }
+        }
+        
+       
+        system.debug('pass '+pass);
+        system.debug('fail '+fail);
+        if(pass == 1 && fail == 0){
+            system.debug('true');
+            return true;
+        }else{
+            system.debug('false');
+            return false;            
+        }
+       
+    }
+
+}
