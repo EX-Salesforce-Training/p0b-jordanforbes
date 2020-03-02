@@ -1,0 +1,16 @@
+@isTest
+public class balancedBracketsTest {
+    
+    @isTest
+    public static void bracketsAreBalanced(){
+    	boolean result = balancedBrackets.bracketsAreBalanced('(,)');
+        system.assertEquals(true,result);
+        result = balancedBrackets.bracketsAreBalanced('[,(,),]');
+        system.assertEquals(true,result);
+        result = balancedBrackets.bracketsAreBalanced('{,],(,),[,}');
+        system.assertEquals(true,result);
+        result = balancedBrackets.bracketsAreBalanced('[,(,(,],{,}');
+        system.assertEquals(false,result);
+    }
+
+}
