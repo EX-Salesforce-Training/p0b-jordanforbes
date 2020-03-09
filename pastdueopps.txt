@@ -1,0 +1,14 @@
+public class pastDueOpps {
+    public static void closePastDueOpportunities(){
+        List<Opportunity> closeOpps = [SELECT id, Name, closeDate, stageName FROM Opportunity WHERE stageName != 'Closed Won'];
+        
+        for(Opportunity i:closeOpps){
+            system.debug(i);
+            if(i.closeDate < Date.today()){
+                i.StageName = 'Closed Lost';
+            }
+            system.debug(i);
+        }
+    }
+
+}
