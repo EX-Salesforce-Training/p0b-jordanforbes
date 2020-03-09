@@ -1,0 +1,20 @@
+public class accSize {
+    public static void updateAccountSize(){
+        List<Account> accList = [SELECT id, size__c, NumberOfEmployees FROM Account];
+        
+        for(Account i:accList){
+            integer n = i.NumberOfEmployees;
+            
+            if(n>=1 && n<=1000 ){
+                i.size__c = 'small';
+            }else if(n>=1001 && n<=10000){
+                i.size__c = 'medium';
+            }else if(n>10000){
+                i.size__c = 'large';
+            }
+            
+            system.debug(i);
+        }
+    }
+
+}

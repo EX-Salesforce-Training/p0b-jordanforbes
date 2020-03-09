@@ -1,0 +1,15 @@
+public class updateCALeads {
+    
+    public static void CAleads(){
+	List<Lead> caList = [SELECT id,Name,Status,State FROM Lead];
+    //system.debug(caList);
+    //
+    for(Lead i:caList){
+        if(i.state == 'CA'){
+            system.debug(i);
+            i.status = 'Closed - Converted';
+            i.description = 'We are no longer doing business in California';
+            system.debug(i);
+        }
+    }}
+}

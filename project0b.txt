@@ -1,7 +1,6 @@
-public class P0B(){
-
-public class Fibonacci {
+public class P0B {
     
+    //challenge 1
     public void Fib(integer n){
      	
         integer level = 1;
@@ -21,9 +20,8 @@ public class Fibonacci {
             }
        	system.debug('input '+ n+', output '+z);
     }
-}
-
-public class factorial {
+	
+	//challenge 2    
     public static Integer nFactorial( Integer n){
         if(n == 0){
             return 1;
@@ -37,10 +35,8 @@ public class factorial {
             return Ans;
         }
     }
-
-}	
-
-public class RotateLeft {
+    
+    //challenge 3
     public static Integer[] rotateLeftNTimes( Integer[] arr, integer n){
         //array = {1,2,3,4,5,6};
         system.debug(arr);
@@ -54,12 +50,9 @@ public class RotateLeft {
         return arr;
         
     }
-
-}
-
-public class sortArray {
     
-    public static Integer[] newSorter(integer[] intList){
+    //challenge 4
+    public static Integer[] sortArray(integer[] intList){
         
         system.debug('intList: '+intList);
         integer n = intList.size();
@@ -79,15 +72,10 @@ public class sortArray {
         
         system.debug(intList);
         return intList;
-        
-       
     }
-	
-}
-
-
-public class balancedBrackets { //('()()')
-    public static boolean bracketsAreBalanced( String s ){
+    
+    //challenge 5
+     public static boolean bracketsAreBalanced( String s ){
         
         List<String> splitStr = new List<String>(s.split(','));
         system.debug(splitStr.size());
@@ -161,16 +149,52 @@ public class balancedBrackets { //('()()')
        
         //return true;
     }
-
-}
-
-
-
-
-
-
-
-
-
-
+    
+    //challenge 6
+    public static void updateAccountSize(){
+        List<Account> accList = [SELECT id, size__c, NumberOfEmployees FROM Account];
+        
+        for(Account i:accList){
+            integer n = i.NumberOfEmployees;
+            
+            if(n>=1 && n<=1000 ){
+                i.size__c = 'small';
+            }else if(n>=1001 && n<=10000){
+                i.size__c = 'medium';
+            }else if(n>10000){
+                i.size__c = 'large';
+            }
+            
+            system.debug(i);
+        }
+    }
+    
+    //challenge 7
+    public static void CAleads(){
+	List<Lead> caList = [SELECT id,Name,Status,State FROM Lead];
+    //system.debug(caList);
+    //
+    	for(Lead i:caList){
+        	if(i.state == 'CA'){
+            	//system.debug(i);
+            	i.status = 'Closed - Converted';
+            	i.description = 'We are no longer doing business in California';
+            	system.debug(i);
+        	}
+    	}
+    }
+    
+    //challenge 8
+    public static void closePastDueOpportunities(){
+        List<Opportunity> closeOpps = [SELECT id, Name, closeDate, stageName FROM Opportunity WHERE stageName != 'Closed Won'];
+        
+        for(Opportunity i:closeOpps){
+            system.debug(i);
+            if(i.closeDate < Date.today()){
+                i.StageName = 'Closed Lost';
+            }
+            system.debug(i);
+        }
+    }
+    
 }
