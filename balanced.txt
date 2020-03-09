@@ -1,4 +1,4 @@
-public class balancedBrackets {
+public class balancedBrackets { //('()()')
     public static boolean bracketsAreBalanced( String s ){
         
         List<String> splitStr = new List<String>(s.split(','));
@@ -10,6 +10,11 @@ public class balancedBrackets {
         integer pass = 0;
         integer fail = 0;
         
+	if(math.mod(x,2) != 0){
+        system.debug('false');
+		return false;
+	}
+
        // system.debug(splitStr[0]);
         
         for(integer i = 0; i<y; i++){ //y = 2 i<2, i= 0,1 
@@ -48,13 +53,16 @@ public class balancedBrackets {
                     system.debug('FAIL! left: '+left+' right: '+right);
                     fail = 1;
                     i+=1;
+                    //return false;
                 }
             }
         }
         
-       
+      
         system.debug('pass '+pass);
         system.debug('fail '+fail);
+
+
         if(pass == 1 && fail == 0){
             system.debug('true');
             return true;
@@ -63,6 +71,7 @@ public class balancedBrackets {
             return false;            
         }
        
+        //return true;
     }
 
 }
