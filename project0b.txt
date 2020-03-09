@@ -1,3 +1,15 @@
+///////////////////////////////////////////////////////////////
+//
+// Project 0 bravo
+// Author: Jordan(jordforb@gmail.com)
+// Date: 3/9/2020
+// Description: series of Apex methods to demonstrate
+// basic understanding of coding concepts 
+//
+////////////////////////////////////////////////////////////////
+
+
+
 public class P0B {
     
     //challenge 1
