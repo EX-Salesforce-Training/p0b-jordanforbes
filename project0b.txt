@@ -127,7 +127,196 @@ public class P0B {
                     	i+=1;
                 }else if(left ==')' && right == '('){
                 	system.debug('PASS! left: '+left+' right: '+right);
-                	pass = 1;
+                	pass = 1;///////////////////////////////////////////////////////////////
+//
+// Project 0 bravo
+// Author: Jordan Forbes(jordforb@gmail.com)
+// Date: 3/9/2020
+// Description: series of Apex methods to demonstrate
+// basic understanding of coding concepts 
+//
+////////////////////////////////////////////////////////////////
+
+
+
+public class P0B {
+    
+    //challenge 1
+    public void Fib(integer n){
+     	
+        integer level = 1;
+       	integer x = 0;
+        integer y = 1;
+        integer z;
+            
+            while(level-1<n){
+                if(level == 1){
+                    z = 1;
+                }else{
+                    z = x+y;
+               		x = y;
+                	y = z; 
+                }
+                level++;
+            }
+       	system.debug('input '+ n+', output '+z);
+    }
+	
+	//challenge 2    
+    public static Integer nFactorial( Integer n){
+        if(n == 0){
+            return 1;
+        }else{
+            integer Ans = 1;
+            for(Integer i=1; i<n+1; i++){
+                system.debug('Ans '+Ans);
+                Ans = Ans*i;
+            }
+            system.debug(Ans);
+            return Ans;
+        }
+    }
+    
+    //challenge 3
+    public static Integer[] rotateLeftNTimes( Integer[] arr, integer n){
+        //array = {1,2,3,4,5,6};
+        system.debug(arr);
+        
+        for(integer i = 0; i<n; i++){
+            integer mover = arr[0];
+            arr.remove(0);
+            arr.add(mover);
+        }
+        system.debug(arr);
+        return arr;
+        
+    }
+    
+    //challenge 4
+    public static Integer[] sortArray(integer[] intList){
+        
+        system.debug('intList: '+intList);
+        integer n = intList.size();
+        system.debug('n: '+n);
+        
+        for (integer i = 0; i< n-1; i++){
+            integer min_idx = i;
+            for(integer j = i+1; j<n; j++){
+                if(intList[j] < intList[min_idx]){
+                    min_idx = j;
+                }
+            }
+            integer temp = intList[min_idx];
+            intList[min_idx] = intList[i];
+            intList[i] = temp;
+        }
+        
+        system.debug(intList);
+        return intList;
+    }
+    
+    //challenge 5
+     public static boolean bracketsAreBalanced( String s ){
+        
+        List<String> splitStr = new List<String>(s.split(','));
+        //system.debug(splitStr.size());
+        
+        integer x = splitStr.size(); 
+        integer y = x/2; 
+       
+        
+		if(math.mod(x,2) != 0){
+       		system.debug('false');
+			return false;
+		}
+
+       // system.debug(splitStr[0]);
+        
+        for(integer i = 0; i<y; i++){  
+           // system.debug('works');
+            for(integer j = x-1; j>y-1; j--){
+                
+                system.debug(splitStr);
+                String left = splitStr[i];
+                String right = splitStr[j];
+                
+                if(left =='(' && right == ')'){
+                	//system.debug('PASS! left: '+left+' right: '+right);
+                    	i+=1;
+                }else if(left =='[' && right == ']'){
+                   	//system.debug('PASS! left: '+left+' right: '+right);
+                    	i+=1;
+                }else if(left =='{' && right == '}'){
+                   	//system.debug('PASS! left: '+left+' right: '+right);
+                    	i+=1;
+                }else if(left ==')' && right == '('){
+                	//system.debug('PASS! left: '+left+' right: '+right);
+                    	i+=1;
+                }else if(left ==']' && right == '['){
+                   	//system.debug('PASS! left: '+left+' right: '+right);                 	
+                    	i+=1;
+                }else if(left =='}' && right == '{'){
+                   	//system.debug('PASS! left: '+left+' right: '+right);                   	
+                    	i+=1;
+                }else{
+                   // system.debug('FAIL! left: '+left+' right: '+right);                    
+                    return false;
+                }
+            }
+        }
+        
+
+        return true;
+    }
+    
+    //challenge 6
+    public static void updateAccountSize(){
+        List<Account> accList = [SELECT id, size__c, NumberOfEmployees FROM Account];
+        
+        for(Account i:accList){
+            integer n = i.NumberOfEmployees;
+            
+            if(n>=1 && n<=1000 ){
+                i.size__c = 'small';
+            }else if(n>=1001 && n<=10000){
+                i.size__c = 'medium';
+            }else if(n>10000){
+                i.size__c = 'large';
+            }
+            
+            system.debug(i);
+        }
+    }
+    
+    //challenge 7
+    public static void CAleads(){
+	List<Lead> caList = [SELECT id,Name,Status,State FROM Lead];
+    //system.debug(caList);
+    //
+    	for(Lead i:caList){
+        	if(i.state == 'CA'){
+            	//system.debug(i);
+            	i.status = 'Closed - Converted';
+            	i.description = 'We are no longer doing business in California';
+            	system.debug(i);
+        	}
+    	}
+    }
+    
+    //challenge 8
+    public static void closePastDueOpportunities(){
+        List<Opportunity> closeOpps = [SELECT id, Name, closeDate, stageName FROM Opportunity WHERE stageName != 'Closed Won'];
+        
+        for(Opportunity i:closeOpps){
+            system.debug(i);
+            if(i.closeDate < Date.today()){
+                i.StageName = 'Closed Lost';
+            }
+            system.debug(i);
+        }
+    }
+    
+}
                     	i+=1;
                 }else if(left ==']' && right == '['){
                    	system.debug('PASS! left: '+left+' right: '+right);
